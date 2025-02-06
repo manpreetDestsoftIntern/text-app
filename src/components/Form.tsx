@@ -1,18 +1,29 @@
 import React from 'react'
+interface Props{
+    Heading?: String;
+    ParagraphOne?: String;
+    ParagraphTwo?: String;
+    Fields: JSON;
 
-const SignUp = () => {
+}
+
+const CustomForm = (props: Props) => {
+    const {Heading, ParagraphOne, ParagraphTwo} = props
   return (
     <div className="bg-theme min-h-screen text-white grid grid-cols-2">
     <div className="flex justify-center items-end lg:items-center md:items-center h-full lg:col-span-1 md:col-span-1 col-span-2">
         <span className="text-center :w-[60%] md:w-[60%] w-fit px-16 lg:py-32 md:py-32 py-8 lg:rounded-r-[70%] lg:rounded-t-[90%] lg:rounded-l-[90%] lg:rounded-b-[70%] md:rounded-r-[70%] md:rounded-t-[90%] md:rounded-l-[90%] md:rounded-b-[70%] lg:bg-[#232338] md:bg-[#232338]">
             <h2 className="text-3xl mb-4">
-                Hey There!
+                {Heading}
+                
             </h2>
             <p>
-                Are you ready to chat and have fun?
+            {ParagraphOne}
+                
             </p>
             <p>
-                Let's get started 🚀
+            {ParagraphTwo}
+            
             </p>
         </span>
     </div>
@@ -30,4 +41,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp;
+export default CustomForm ;

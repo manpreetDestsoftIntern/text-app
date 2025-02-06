@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "target": "ES6", // Specify the ECMAScript target version
+      "lib": ["DOM", "DOM.Iterable", "ESNext"], // Include necessary libraries
+      "allowJs": true, // Allow JavaScript files to be compiled
+      "skipLibCheck": true, // Skip type checking of declaration files
+      "esModuleInterop": true, // Enable compatibility with ES modules
+      "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+      "strict": true, // Enable all strict type-checking options
+      "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+      "module": "ESNext", // Specify module code generation
+      "moduleResolution": "Node", // Use Node.js style module resolution
+      "resolveJsonModule": true, // Allow importing JSON files
+      "isolatedModules": true, // Ensure each file can be transpiled independently
+      "noEmit": true, // Do not emit output (e.g., JS files)
+      "jsx": "react-jsx", // Support for JSX in .tsx files
+      "baseUrl": ".", // Base directory for resolving non-relative module names
+      "paths": {
+        "@/*": ["./src/*"] // Map paths for easier imports (e.g., @/components/Button)
+      }
+    },
+    "include": ["src"], // Include files in the src directory
+    "exclude": ["node_modules", "build"] // Exclude node_modules and build directories
+  }

@@ -2,17 +2,18 @@ import ReactDOM from "react-dom/client";
 import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
-import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
+import HomePage from "./pages/HomePage";
+import SignUpPage from "./pages/SignUpPage";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
+          <Route index element={<HomePage />} />
+          <Route path="sign-up" element={<SignUpPage />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
