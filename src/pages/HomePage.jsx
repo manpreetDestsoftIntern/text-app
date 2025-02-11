@@ -1,21 +1,27 @@
-import React from 'react'
-// import { useChatStore } from '../store/useChatStore'
-// import Sidebar from '../Components/Sidebar';
-// import NoChatSelected from '../Components/NoChatSelected';
-// import ChatContainer from '../Components/ChatContainer';
+import { LOGIN_FIELDS } from '../lib/form_fields'
+import CustomForm from '../components/CustomForm'
+import { useAuthStore } from '../store/useAuthStore';
+import { useFormStore } from '../store/useFormStore';
 
 const HomePage = () => {
-  // const {selectedUser} = useChatStore();
+  const {login, isLoggingIn} = useAuthStore();
+  const { formData, submitForm } = useFormStore();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+      login(formData)
+  };
   return (
-    <div className='h-[638px] bg-blue-100'>
-      {/* <div className='flex items-center justify-center px-4' style={{paddingTop: "30px"}}>
-        <div className='bg-blue-50 rounded-lg shadow-md w-full max-w-6xl h-[500px]'>
-          <div className='flex justify-between h-full rounded-md overflow-hidden'>
-            <Sidebar/>
-            {!selectedUser? <NoChatSelected/> : <ChatContainer />}
-          </div>
-        </div>
-      </div> */}
+    <div className=''>
+      {/* login form */}
+      <CustomForm 
+      Heading="Hey There!"
+      ParagraphOne="Are you ready to chat and have fun?"
+      ParagraphTwo="Let's get started 🚀"
+      Fields={LOGIN_FIELDS} // ✅ Ensure it is correctly passed
+      Button_Labal={"Sign In"}
+      handleSubmit={handleSubmit}
+    />
     </div>
   )
 }

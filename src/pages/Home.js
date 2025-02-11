@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SignUp from "../components/Form.jsx"
+import SignUp from "../components/CustomForm.js"
 import { io } from "socket.io-client";
 
 const Home = () => {
