@@ -11,7 +11,7 @@ export const SIGN_UP_FIELDS: Array<Field> = [
         type: "email"
     },
     { 
-        name : "Username",
+        name : "username",
         placeholder: "Username",
         type: "text"
     },
@@ -21,7 +21,7 @@ export const SIGN_UP_FIELDS: Array<Field> = [
         type: "password"
     },
     { 
-        name : "confirm-password",
+        name : "confirm_password",
         placeholder: "Confirm password",
         type: "password"
     }

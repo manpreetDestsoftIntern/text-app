@@ -1,44 +1,37 @@
 import ReactDOM from "react-dom/client";
 import './index.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUpPage";
+import App from "./App";
 
-export default function App() {
-  return (
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import {BrowserRouter} from 'react-router-dom';
+// export default function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Layout />}>
+//           <Route index element={<HomePage />} />
+//           <Route path="sign-up" element={<SignUpPage />} />
+//           {/* <Route path="login" element={<login />} /> */}
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="sign-up" element={<SignUpPage />} />
-          {/* <Route path="login" element={<login />} /> */}
-        </Route>
-      </Routes>
+    <App />
     </BrowserRouter>
-  );
-}
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
-
-
-
-
-
-
-
-// import React from 'react';
-// import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
+  </StrictMode>,
+)
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
+// root.render(<App />);
 
-// If you want to start measuring performance in your app, pass a function
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
+
+
+

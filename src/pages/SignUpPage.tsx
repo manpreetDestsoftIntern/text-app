@@ -5,30 +5,31 @@ import toast from "react-hot-toast";
 import CustomForm from "../components/CustomForm"
 import { SIGN_UP_FIELDS } from "../lib/form_fields";
 import { useAuthStore } from "../store/useAuthStore";
+import { useFormStore } from "../store/useFormStore";
 
 const SignUpPage = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-  });
+  const { formData, submitForm } = useFormStore();
+
   const {signup, isSigningUp} = useAuthStore();
   const validateForm = () => {
-    if (!formData.fullName.trim()) return toast.error("Please enter a full name");
+    if (!formData.username) return toast.error("Please enter a full name");
   
-    if (!formData.email.trim() || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+    if (!formData.email || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
       return toast.error("Please enter a valid email address");
     }
   
-    if (!formData.password.trim() || formData.password.length < 6) {
-      return toast.error("Password must be at least 6 characters long");
+    if (!formData.password || formData.password.length < 5) {
+      return toast.error("Password must be at least 5 characters long");
+    }
+    if (formData.password !== formData.confirm_password) {
+      return toast.error("Password and confirm_password are not same");
     }
   
     return true; // If all validations pass
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
+console.log(formData)
     const success = validateForm();
     if(success === true) {
       signup(formData)

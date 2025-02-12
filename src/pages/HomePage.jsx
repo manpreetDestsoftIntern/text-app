@@ -1,27 +1,21 @@
-import { LOGIN_FIELDS } from '../lib/form_fields'
-import CustomForm from '../components/CustomForm'
-import { useAuthStore } from '../store/useAuthStore';
-import { useFormStore } from '../store/useFormStore';
+import React from 'react'
+import { useChatStore } from '../store/useChatStore'
+import ChatContainer from '../components/ChatContainer';
+import NoChatSelected from '../components/NoChatSelected';
+import { Sidebar } from 'lucide-react';
 
 const HomePage = () => {
-  const {login, isLoggingIn} = useAuthStore();
-  const { formData, submitForm } = useFormStore();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-      login(formData)
-  };
+  const {selectedUser} = useChatStore();
   return (
-    <div className=''>
-      {/* login form */}
-      <CustomForm 
-      Heading="Hey There!"
-      ParagraphOne="Are you ready to chat and have fun?"
-      ParagraphTwo="Let's get started 🚀"
-      Fields={LOGIN_FIELDS} // ✅ Ensure it is correctly passed
-      Button_Labal={"Sign In"}
-      handleSubmit={handleSubmit}
-    />
+    <div className='h-[638px] bg-blue-100'>
+      <div className='flex items-center justify-center px-4' style={{paddingTop: "30px"}}>
+        <div className='bg-blue-50 rounded-lg shadow-md w-full max-w-6xl h-[500px]'>
+          <div className='flex justify-between h-full rounded-md overflow-hidden'>
+            <Sidebar/>
+            {!selectedUser? <NoChatSelected/> : <ChatContainer />}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
