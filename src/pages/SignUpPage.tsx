@@ -29,7 +29,6 @@ const SignUpPage = () => {
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
-console.log(formData)
     const success = validateForm();
     if(success === true) {
       signup(formData)

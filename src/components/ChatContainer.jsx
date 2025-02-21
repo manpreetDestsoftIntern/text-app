@@ -88,7 +88,7 @@ const ChatContainer = () => {
                     }}
                   >
                     <img
-                      src={selectedUser.profilePic || "/avatar.png"}
+                      src={selectedUser.profilePic || "/avatar.jpg"}
                       alt="Profile"
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />
@@ -140,7 +140,7 @@ const ChatContainer = () => {
                     }}
                   >
                     <img
-                      src={authUser.profilePic || "/avatar.png"}
+                      src={authUser.profilePic || "/avatar.jpg"}
                       alt="Profile"
                       style={{ width: "100%", height: "100%", objectFit: "cover" }}
                     />

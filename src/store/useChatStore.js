@@ -3,17 +3,23 @@ import toast from 'react-hot-toast'
 import {axiosInstance} from '../lib/axios'
 import { useAuthStore } from './useAuthStore';
 
+
 export const useChatStore = create((set, get) => ({
     messages: [],
     users: [],
     selectedUser: null,
     isUsersLoading: false,
     isMessagesLoading: false,
-
+    
     getUsers: async () => {
         set({isUsersLoading: true})
+        const user = useAuthStore.getState().authUser;
         try {
-            const res = await axiosInstance.get('/message/users');
+            const res = await axiosInstance.get('/api/message/users', {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`
+                }
+              });
             set({users: res.data});
         } catch (error) {
             toast.error(error.response.data.message)
@@ -22,9 +28,14 @@ export const useChatStore = create((set, get) => ({
         }
     },
     getMessages: async (userId) => {
+        const user = useAuthStore.getState().authUser;
         set({isMessagesLoading: true});
         try {
-            const res = await axiosInstance.get(`/message/${userId}`);
+            const res = await axiosInstance.get(`/api/message/${userId}`, {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`
+                }
+              });
             set({messages: res.data});
         } catch (error) {
             toast.error(error.response.data.message)
@@ -34,9 +45,14 @@ export const useChatStore = create((set, get) => ({
     },
 
     sendMessage: async (messageData) => {
+        const user = useAuthStore.getState().authUser;
         const {selectedUser, messages} = get();
         try {
-            const res = await axiosInstance.post(`/message/send/${selectedUser._id}`, messageData);
+            const res = await axiosInstance.post(`/api/message/send/${selectedUser._id}`, messageData, {
+                headers: {
+                  'Authorization': `Bearer ${user.token}`
+                }
+             });
             set({messages: [...messages, res.data]})
         } catch (error) {
             toast.error(error.response.data.message);

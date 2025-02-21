@@ -44,11 +44,9 @@ export const useAuthStore = create((set, get) => ({
     login: async (data) => {
         set({ isLoggingIn: true });
         try {
-            console.log(data)
-          const res = await axiosInstance.post("/api/auth/login", data);
+          const res = await axiosInstance.put("/api/auth/login", data);
           set({ authUser: res.data });
           toast.success("Logged in successfully");
-    
           get().connectSocket();
         } catch (error) {
           toast.error(error.response?.data?.message);
@@ -71,7 +69,6 @@ export const useAuthStore = create((set, get) => ({
         try {
             const res = await axiosInstance.put("/api/users/update-profile", data);
             set({ authUser: res.data });
-            console.log("updated profile")
             toast.success("your profile is updated")
         } catch (error) {
             console.error("Error in updateProfile:", error);  // Log full error

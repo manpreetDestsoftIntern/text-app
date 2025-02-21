@@ -51,7 +51,6 @@ export const useFormStore = create<FormState>((set, get) => ({
     try {
       const res = await axiosInstance.post(endpoint, get().formData);
       toast.success("Form submitted successfully!");
-      console.log("Response:", res.data);
       get().resetForm();
     } catch (error: any) {
       toast.error(error.response?.data?.message || "Submission failed.");

@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useChatStore } from "../store/useChatStore";
+import { useAuthStore } from "../store/useAuthStore";
 const Sidebar = () => {
-  const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } =
-    useChatStore();
+  const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
+  const {authUser} = useAuthStore();
 
   const onlineUsers = [];
   useEffect(() => {
     getUsers();
-  }, [getUsers]);
+  }, [authUser]);
 
   if (isUsersLoading) return <div>Loading... </div>;
 
@@ -33,13 +34,13 @@ const Sidebar = () => {
           >
             <div className="relative w-12 h-12 flex-shrink-0">
               <img
-                src={user.profilePic || "/avatar.png"}
+                src={user.profilePic || "/avatar.jpg"}
                 alt={user.name}
                 className="w-full h-full object-cover rounded-full border border-gray-500"
               />
             </div>
             <div className="hidden lg:block text-left flex-1 truncate">
-              <div className="font-medium truncate text-black">{user.fullName}</div>
+              <div className="font-medium truncate text-black">{user.username}</div>
             </div>
           </button>
         ))}

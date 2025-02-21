@@ -10,12 +10,13 @@ const socket = io('http://localhost:5001'); // Connect to the backend server
 // Send message
 const sendMessage = () => {
   if (message.trim()) {
-    socket.emit('send_message', { message });
+    // socket.emit('send_message', { message });
     setMessage('');
   }
 };
 
-   // Receive message
+   // Receive message 
+  //  pending
    useEffect(() => {
     socket.on('set_username', () => {"manu"});
     socket.on('receive_message', (data) => {

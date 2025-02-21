@@ -19,7 +19,7 @@ const Navbar = () => {
                   
                   <div className='flex justify-between items-center gap-2'>
           <img 
-            src={authUser?.profilePic || "/avatar.png"} 
+            src={authUser?.profilePic || "/avatar.jpg"} 
             alt="Profile" 
             className="w-10 h-10 rounded-full object-cover"
           />
